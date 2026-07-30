@@ -1,197 +1,190 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ConformaOne | Gestão da Conformidade e Terceiros</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConformaOne</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<style>
-:root {
-    --primary: #051139;
-    --accent: #CBEA00;
-    --accent-hover: #b2ce00;
-    --gray: #8C95A0;
-    --bg: #F8FAFC;
-    --text: #0F172A;
-    --muted: #64748B;
-    --white: #FFFFFF;
-    --dark-bg: #030A21;
-}
-
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
-
-body { background:var(--bg); color:var(--text); overflow-x:hidden; }
-
-/* BANNER FIXO */
-.top-banner {
-    background: var(--primary);
-    color: var(--accent);
-    text-align: center;
-    padding: 8px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 2000;
-}
-
-/* NAV */
-nav {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 8%;
-    background:var(--white);
-    position:sticky;
-    top:40px;
-    z-index:1000;
-}
-
-.logo-container img {
-    height:60px;
-}
-
-.nav-links {
-    display:flex;
-    gap:30px;
-}
-
-.nav-links a {
-    text-decoration:none;
-    color:var(--muted);
-}
-
-/* MOBILE MENU */
-.menu-toggle {
-    display:none;
-    font-size:24px;
-    cursor:pointer;
-}
-
-@media(max-width:768px){
-    .nav-links {
-        display:none;
-        position:absolute;
-        top:80px;
-        right:20px;
-        background:white;
-        flex-direction:column;
-        padding:20px;
-        border-radius:10px;
-        box-shadow:0 10px 30px rgba(0,0,0,0.1);
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
 
-    .nav-links.active {
-        display:flex;
+    body {
+      background: #0f172a;
+      color: #fff;
     }
 
-    .menu-toggle {
-        display:block;
+    header {
+      padding: 20px;
+      background: #020617;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
     }
-}
 
-/* HERO */
-.hero {
-    padding:140px 8% 100px;
-    text-align:center;
-    background: radial-gradient(circle at top, #0a1f5c, var(--primary));
-    color:white;
-}
+    .hero {
+      padding: 60px 20px;
+      text-align: center;
+    }
 
-.hero h1 { font-size:3rem; }
-.hero span { color:var(--accent); }
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
 
-/* SECTIONS */
-section { padding:90px 8%; }
+    .hero p {
+      color: #94a3b8;
+    }
 
-.section-title { text-align:center; margin-bottom:60px; }
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 40px;
+    }
 
-/* FOOTER */
-footer {
-    text-align:center;
-    padding:40px;
-    background:var(--dark-bg);
-    color:var(--gray);
-}
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
 
-footer a {
-    color:var(--accent);
-    text-decoration:none;
-}
-</style>
+    .card:hover {
+      transform: translateY(-5px);
+      background: #334155;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #cbd5f5;
+    }
+
+    /* CARROSSEL */
+    .carousel-container {
+      overflow: hidden;
+      position: relative;
+      padding: 40px;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 20px;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-item {
+      min-width: 300px;
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .controls {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #3b82f6;
+      color: white;
+    }
+
+    button:hover {
+      background: #2563eb;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #64748b;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="top-banner">
-🚀 Sistema ConformaOne em desenvolvimento — Lançamento em breve
-</div>
-
-<nav>
-    <div class="logo-container">
-        <img src="images/logo2.png">
-    </div>
-
-    <div class="menu-toggle" onclick="toggleMenu()">
-        <i class="fas fa-bars"></i>
-    </div>
-
-    <div class="nav-links" id="menu">
-        <a href="#desafio">Desafios</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#plataforma">Plataforma</a>
-    </div>
-</nav>
-
-<header class="hero">
-    <h1>Gestão de Terceiros <span>Sem Riscos</span></h1>
-    <p>Automatize processos e elimine falhas operacionais</p>
+<header>
+  ConformaOne
 </header>
 
-<section id="desafio">
-    <div class="section-title">
-        <h2>Desafios</h2>
-    </div>
+<section class="hero">
+  <h1>Plataforma Inteligente</h1>
+  <p>Gestão moderna e eficiente para seu negócio</p>
 </section>
 
-<section id="como-funciona">
-    <div class="section-title">
-        <h2>Como funciona</h2>
-    </div>
+<!-- CARDS -->
+<section class="cards">
+  <div class="card">
+    <h3>Automação</h3>
+    <p>Processos automatizados para ganhar produtividade.</p>
+  </div>
+
+  <div class="card">
+    <h3>Segurança</h3>
+    <p>Proteção de dados com alto nível de confiabilidade.</p>
+  </div>
+
+  <div class="card">
+    <h3>Escalabilidade</h3>
+    <p>Cresça sem limites com nossa infraestrutura.</p>
+  </div>
 </section>
 
-<section id="plataforma">
-    <div class="section-title">
-        <h2>Plataforma</h2>
-    </div>
+<!-- CARROSSEL -->
+<section class="carousel-container">
+  <div class="carousel" id="carousel">
+    <div class="carousel-item">Item 1</div>
+    <div class="carousel-item">Item 2</div>
+    <div class="carousel-item">Item 3</div>
+    <div class="carousel-item">Item 4</div>
+  </div>
+
+  <div class="controls">
+    <button onclick="prev()">←</button>
+    <button onclick="next()">→</button>
+  </div>
 </section>
 
 <footer>
-    <p>© 2026 ConformaOne</p>
-
-    <p>
-        📧 contato@conformaone.com.br
-    </p>
-
-    <p>
-        📱 WhatsApp: (12) 98702-4036
-    </p>
-
-    <p>
-        🔗 
-        <a href="https://instagram.com/conformaone" target="_blank">Instagram</a> |
-        <a href="https://linkedin.com/company/conformaone" target="_blank">LinkedIn</a>
-    </p>
+  © 2026 ConformaOne
 </footer>
 
 <script>
-function toggleMenu(){
-    document.getElementById("menu").classList.toggle("active");
-}
+  let index = 0;
+
+  function updateCarousel() {
+    const carousel = document.getElementById("carousel");
+    carousel.style.transform = `translateX(-${index * 320}px)`;
+  }
+
+  function next() {
+    const total = document.querySelectorAll(".carousel-item").length;
+    if (index < total - 1) {
+      index++;
+      updateCarousel();
+    }
+  }
+
+  function prev() {
+    if (index > 0) {
+      index--;
+      updateCarousel();
+    }
+  }
 </script>
 
 </body>
