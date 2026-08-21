@@ -10,10 +10,10 @@
 
     <style>
         :root {
-            --primary: #051139;      /* Azul Escuro da Logo */
-            --accent: #CBEA00;       /* Verde Lima Neon da Logo */
+            --primary: #051139;     /* Azul Escuro da Logo */
+            --accent: #CBEA00;      /* Verde Lima Neon da Logo */
             --accent-hover: #b2ce00;
-            --gray: #8C95A0;         /* Cinza da Logo */
+            --gray: #8C95A0;        /* Cinza da Logo */
             --bg: #F8FAFC;
             --text: #0F172A;
             --muted: #64748B;
@@ -570,10 +570,16 @@
             .chess-header-container { flex-direction: column; }
             .carousel .card { flex: 0 0 90vw; height: 260px; }
             .nav-btn { display: none; }
-            .logo-container img { height: 50px; }
-            .logo img {
-                width: 130px; /* Aumente este valor até ficar bom no celular */
-                max-width: none;
+            
+            /* LOGO AJUSTADA PARA O MOBILE - TAMANHO AUMENTADO */
+            .logo-container {
+                height: 50px;
+            }
+            .logo-container img { 
+                height: 100%; 
+                width: auto; 
+                max-width: 220px; /* Aumentado para o logo ficar maior */
+                margin-left: 0;
             }
 
             .menu-toggle {
@@ -622,7 +628,7 @@
     </nav>
 
     <header class="hero">
-        <h1>Gestão de Terceiros e Conformidade <span>com Segurança e Previsibilidade</span><h1>
+        <h1>Gestão de Terceiros e Conformidade <span>com Segurança e Previsibilidade</span></h1>
         <p>Zero planilhas. Máximo controle e o melhor custo-benefício do mercado para mitigar passivos e automatizar a gestão de terceiros.</p>
         <a href="mailto:contato@conformaone.com.br" class="btn-primary">
             <i class="far fa-paper-plane"></i> Fale Conosco
@@ -667,19 +673,19 @@
     <section id="como-funciona">
         <div class="section-title">
             <h2>Fluxo Simples e Descomplicado</h2>
-            <p>Sua empresa segura e em conformidade em apenas 4 passos</p>
+            <p>Segurança e conformidade em apenas 4 passos</p>
         </div>
 
         <div class="steps">
             <div class="step">
                 <span>1</span>
-                <h3>Convite do Terceiro</h3>
+                <h3>Convite ao Terceiro</h3>
                 <p>O cliente convida a empresa parceira diretamente pela plataforma de forma automatizada.</p>
             </div>
 
             <div class="step">
                 <span>2</span>
-                <h3>Autocadastro</h3>
+                <h3>Autocadastro do Terceiro</h3>
                 <p>O próprio terceiro cadastra sua empresa e insere seus dados de forma autônoma e segura.</p>
             </div>
 
@@ -712,7 +718,7 @@
                 <div class="chess-item">
                     <span class="chess-num">01</span>
                     <h3>Pré-Análise com IA</h3>
-                    <p>Nossa inteligência artificial valida automaticamente se o PDF está legível antes mesmo da aprovação final.</p>
+                    <p>Nossa inteligência artificial valida automaticamente se o arquivo está legível e fornece feedback antes mesmo da aprovação final.</p>
                 </div>
                 <div class="chess-item">
                     <span class="chess-num">02</span>
@@ -730,7 +736,7 @@
 
     <section id="plataforma">
         <div class="section-title">
-            <h2>Módulos Operacionais Completos</h2>
+            <h2>Funcionalidades Operacionais Completas</h2>
             <p>Ferramentas robustas para gerenciar riscos com terceiros, funcionários e prazos</p>
         </div>
 
@@ -739,7 +745,7 @@
             <div class="card-box">
                 <i class="fas fa-file-signature"></i>
                 <h3>Ambiente Centralizado</h3>
-                <p>Elimie documentos disperços em planilhas, e-mails e sistemas isolados. Centralize todas as informações dos terceiros e colaboradores em uma única plataforma segura e de fácil acesso e consulta.</p>
+                <p>Elimie documentos dispersos em planilhas, e-mails e sistemas isolados. Centralize todas as informações dos terceiros e colaboradores em uma única plataforma segura e de fácil acesso e consulta.</p>
             </div>
 
             <div class="card-box">
@@ -858,10 +864,8 @@
             window.addEventListener("scroll", function () {
                 let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 if (scrollTop > lastScrollTop && scrollTop > 50) {
-                    // Scroll down
                     topBanner.classList.add("hidden");
                 } else {
-                    // Scroll up
                     topBanner.classList.remove("hidden");
                 }
                 lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
